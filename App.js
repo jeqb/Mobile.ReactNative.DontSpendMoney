@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AddItemView from './views/AddItemView';
-import store from './store/store';
 import { Provider } from 'react-redux';
+import store from './state/store';
 
 const App = () => {
 
