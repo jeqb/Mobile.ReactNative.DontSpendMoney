@@ -7,11 +7,13 @@ import { StyleSheet, FlatList, Text, View, TextInput } from 'react-native';
 
 const ListProductView = () => {
 
+  const currency = '$';
+
   const productList = [
     {
       key: 1,
       name: 'M&P Alluminium',
-      cost: 999.99,
+      cost: 1,
       url: 'smith-wesson.com',
       wantIntensity: 'A LOT',
       isNeeded: 'no'
@@ -19,7 +21,7 @@ const ListProductView = () => {
     {
       key: 2,
       name: 'Electric Scooter',
-      cost: 800,
+      cost: 1,
       url: 'electric-scooter.com',
       wantIntensity: 'a little',
       isNeeded: 'no'
@@ -27,7 +29,7 @@ const ListProductView = () => {
     {
       key: 3,
       name: 'Video Card',
-      cost: 600,
+      cost: 1,
       url: 'amd.com',
       wantIntensity: 'a little',
       isNeeded: 'no'
@@ -35,7 +37,7 @@ const ListProductView = () => {
     {
       key: 4,
       name: '126 GB Ram',
-      cost: 120,
+      cost: 1,
       url: 'Amazon.com',
       wantIntensity: 'a little',
       isNeeded: 'no'
@@ -43,7 +45,7 @@ const ListProductView = () => {
     {
       key: 5,
       name: 'Polymer 80 Frame',
-      cost: 120,
+      cost: 1,
       url: 'polymer80.com',
       wantIntensity: 'a little',
       isNeeded: 'no'
@@ -51,7 +53,7 @@ const ListProductView = () => {
     {
       key: 6,
       name: 'Polymer 80 jig',
-      cost: 24,
+      cost: 1,
       url: 'polymer80.com',
       wantIntensity: 'a little',
       isNeeded: 'no'
@@ -59,7 +61,7 @@ const ListProductView = () => {
     {
       key: 7,
       name: 'M&P Alluminium',
-      cost: 999.99,
+      cost: 1,
       url: 'smith-wesson.com',
       wantIntensity: 'A LOT',
       isNeeded: 'no'
@@ -67,7 +69,7 @@ const ListProductView = () => {
     {
       key: 8,
       name: 'Electric Scooter',
-      cost: 800,
+      cost: 1,
       url: 'electric-scooter.com',
       wantIntensity: 'a little',
       isNeeded: 'no'
@@ -75,7 +77,7 @@ const ListProductView = () => {
     {
       key: 9,
       name: 'Video Card',
-      cost: 600,
+      cost: 1,
       url: 'amd.com',
       wantIntensity: 'a little',
       isNeeded: 'no'
@@ -83,7 +85,7 @@ const ListProductView = () => {
     {
       key: 10,
       name: '126 GB Ram',
-      cost: 120,
+      cost: 1,
       url: 'Amazon.com',
       wantIntensity: 'a little',
       isNeeded: 'no'
@@ -91,7 +93,7 @@ const ListProductView = () => {
     {
       key: 11,
       name: 'Polymer 80 Frame',
-      cost: 120,
+      cost: 1,
       url: 'polymer80.com',
       wantIntensity: 'a little',
       isNeeded: 'no'
@@ -99,7 +101,7 @@ const ListProductView = () => {
     {
       key: 12,
       name: 'Polymer 80 jig',
-      cost: 24,
+      cost: 1,
       url: 'polymer80.com',
       wantIntensity: 'a little',
       isNeeded: 'no'
@@ -107,7 +109,7 @@ const ListProductView = () => {
     {
       key: 13,
       name: 'M&P Alluminium',
-      cost: 999.99,
+      cost: 1,
       url: 'smith-wesson.com',
       wantIntensity: 'A LOT',
       isNeeded: 'no'
@@ -115,7 +117,7 @@ const ListProductView = () => {
     {
       key: 14,
       name: 'Electric Scooter',
-      cost: 800,
+      cost: 1,
       url: 'electric-scooter.com',
       wantIntensity: 'a little',
       isNeeded: 'no'
@@ -123,7 +125,7 @@ const ListProductView = () => {
     {
       key: 15,
       name: 'Video Card',
-      cost: 600,
+      cost: 1,
       url: 'amd.com',
       wantIntensity: 'a little',
       isNeeded: 'no'
@@ -131,7 +133,7 @@ const ListProductView = () => {
     {
       key: 16,
       name: '126 GB Ram',
-      cost: 120,
+      cost: 1,
       url: 'Amazon.com',
       wantIntensity: 'a little',
       isNeeded: 'no'
@@ -139,7 +141,7 @@ const ListProductView = () => {
     {
       key: 17,
       name: 'Polymer 80 Frame',
-      cost: 120,
+      cost: 1,
       url: 'polymer80.com',
       wantIntensity: 'a little',
       isNeeded: 'no'
@@ -147,15 +149,24 @@ const ListProductView = () => {
     {
       key: 18,
       name: 'Polymer 80 jig',
-      cost: 24,
+      cost: 1,
       url: 'polymer80.com',
       wantIntensity: 'a little',
       isNeeded: 'no'
     }
-  ]
+  ];
+
+  const sumCost = (productList) => {
+    return productList.reduce((n, {cost}) => n + cost, 0);
+  };
 
   return (
     <View style={styles.container}>
+      <View style={{backgroundColor: 'aqua'}}>
+        <Text style={styles.text}>
+          Total Cost of Wants: {currency + sumCost(productList)}
+        </Text>
+      </View>
       <FlatList
         data={productList}
         renderItem={
@@ -165,21 +176,29 @@ const ListProductView = () => {
                 style={styles.item}
                 key={item.key}
               >
-                <Text style={styles.text}>
-                  {item.name + ': '}
-                </Text>
-                <Text style={styles.text}>
-                  {/* TODO: make the currency configurable. */}
-                  {'$' + item.cost}
-                </Text>
+                {/* Flex not working yet */}
+                <View style={{flexDirection: 'row', justifyContent: 'flex-start'}}>
+                  <Text style={styles.text}>
+                    {item.name + ': '}
+                  </Text>
+                  <Text style={styles.text}>
+                    {currency + item.cost}
+                  </Text>
+                </View>
+                {/* Flex not working yet */}
+                <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
+                  <Text style={styles.text}>
+                    { item.isNeeded == 'yes' ? 'Need' : 'Want'}
+                  </Text>
+                </View>
               </View>
             )
           }
         }
       />
     </View>
-  )
-}
+  );
+};
 
 // TODO: make this configurable so colors can be set from a central place
 const styles = StyleSheet.create({
