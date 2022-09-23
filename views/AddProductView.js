@@ -5,7 +5,8 @@ import { StyleSheet, Text, View, TextInput } from 'react-native';
 import RadioSelector from '../components/RadioSelector';
 import { Button } from "@react-native-material/core";
 
-const AddItemView = () => {
+// TODO: Add "What will you do with it?" or something like that to the prompt
+const AddProductView = () => {
 
   const wantIntensity = [
     { value: 'a little', id: 0 },
@@ -137,4 +138,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AddItemView;
+export default AddProductView;

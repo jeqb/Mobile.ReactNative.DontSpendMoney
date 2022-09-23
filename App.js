@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import AddItemView from './views/AddItemView';
+import AddProductView from './views/AddProductView';
+import ListProductView from './views/ListProductView';
 import { Provider } from 'react-redux';
 import store from './state/store';
 
@@ -7,7 +8,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <AddItemView/>
+      <ListProductView/>
     </Provider>
   );
 }
