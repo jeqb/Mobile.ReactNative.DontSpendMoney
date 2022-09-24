@@ -5,8 +5,14 @@ import { StyleSheet, Text, View, TextInput } from 'react-native';
 import RadioSelector from '../components/RadioSelector';
 import { Button } from "@react-native-material/core";
 
+// DEBUG
+import store from '../state/store';
+
 // TODO: Add "What will you do with it?" or something like that to the prompt
 const AddProductView = () => {
+
+  // DEBUG
+  console.log(store.getState().product.value);
 
   const wantIntensity = [
     { value: 'a little', id: 0 },
