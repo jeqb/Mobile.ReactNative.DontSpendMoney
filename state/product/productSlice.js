@@ -149,6 +149,11 @@ const initialState = {
   ]
 }
 
+const getMaxKey = (state) => {
+
+  return Math.max(...state.value.map(o => o.key));
+}
+
 export const productSlice = createSlice({
   name: 'product',
   initialState,
@@ -156,9 +161,16 @@ export const productSlice = createSlice({
     createProduct: (state, action) => {
 
       console.log('createProduct called')
-      console.log('createProduct action.payload: ', action.payload)
 
-      state.value.push(action.payload)
+      const maxKey = getMaxKey(state);
+      const newKey = maxKey + 1;
+      
+      var deepCopy = JSON.parse(JSON.stringify(action.payload));
+      deepCopy.key = newKey;
+
+      state.value.push(deepCopy);
+
+      console.log('createProduct added value: ', deepCopy);
     }
   }
 })

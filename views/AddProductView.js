@@ -5,14 +5,8 @@ import { StyleSheet, Text, View, TextInput } from 'react-native';
 import RadioSelector from '../components/RadioSelector';
 import { Button } from "@react-native-material/core";
 
-// DEBUG
-import store from '../state/store';
-
 // TODO: Add "What will you do with it?" or something like that to the prompt
-const AddProductView = () => {
-
-  // DEBUG
-  console.log(store.getState().product.value);
+const AddProductView = ({ navigation }) => {
 
   const wantIntensity = [
     { value: 'a little', id: 0 },
@@ -53,17 +47,19 @@ const AddProductView = () => {
     setProductNeeded(value)
   };
 
-  const remindMeButtonClick = (value) => {
+  const remindMeButtonClick = () => {
 
-    console.log('Remind Me Button clicked')
+    console.log('Remind Me Button clicked');
 
-      dispatch(createProduct({
-        name: productName,
-        cost: productCost,
-        url: productUrl,
-        wantIntensity: productWant,
-        isNeeded: productNeeded,
-      }))
+    dispatch(createProduct({
+      name: productName,
+      cost: productCost,
+      url: productUrl,
+      wantIntensity: productWant,
+      isNeeded: productNeeded,
+    }))
+
+    navigation.navigate('ListProduct');
   };
 
 
