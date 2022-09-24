@@ -1,0 +1,8 @@
+- Saves data to phone storage
+- take pictures of items with phone
+- Async maybe?
+- Push Reminders
+- a couple graphs to visualize money saved and how much you want and other stuff.
+  - "Dashboard" type of view
+- Make it Pretty
+- Dark Theme (matches the current theme of phone)
